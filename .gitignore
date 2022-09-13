@@ -1,0 +1,9 @@
+.vs/*
+bin/*
+obj/*
+*.exe
+*.pdb
+*.manifest
+*.exe.config
+*.suo
+*.dll
