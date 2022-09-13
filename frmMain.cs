@@ -68,7 +68,7 @@ namespace VisaCardImageGenerator
         {
             System.Drawing.Text.PrivateFontCollection pfc = new System.Drawing.Text.PrivateFontCollection();
             pfc.AddFontFile(fontFilePath);
-            Font font = new Font(pfc.Families[0], fontSize, FontStyle.Regular, GraphicsUnit.Point, 0);//font就是通过文件创建的字体对象
+            Font font = new Font(pfc.Families[0], fontSize, FontStyle.Regular, GraphicsUnit.Point, 0);
             return font;
         }
     }
