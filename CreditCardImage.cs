@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VisaCardImageGenerator
+namespace CreditCardImageGenerator
 {
-    public class VisaCardImage
+    public class CreditCardImage
     {
         private string cardNumber;
         private string cardName;
@@ -14,13 +14,13 @@ namespace VisaCardImageGenerator
         private Font cardNumberFont;
         private Font cardValidDateFont;
         private string outputFilePath;
-        private string visaCardImageFullPath;
+        private string creditCardImageFullPath;
 
-        private Bitmap visaCardImage;
+        private Bitmap? creditCardImage;
 
-        public VisaCardImage(
+        public CreditCardImage(
             string cardNumber, string cardName, string cardValidDate,
-            string visaCardImageFullPath, 
+            string creditCardImageFullPath, 
             Font cardNumberFont,
             Font cardValidDateFont,
             string outputFilePath)
@@ -28,7 +28,7 @@ namespace VisaCardImageGenerator
             this.cardNumber = cardNumber; 
             this.cardName = cardName;
             this.cardValidDate = cardValidDate;
-            this.visaCardImageFullPath = visaCardImageFullPath; 
+            this.creditCardImageFullPath = creditCardImageFullPath; 
             this.cardNumberFont = cardNumberFont;
             this.cardValidDateFont = cardValidDateFont;
             this.outputFilePath = outputFilePath;
@@ -45,8 +45,8 @@ namespace VisaCardImageGenerator
             }
             cardNumber = sb.ToString();
 
-            visaCardImage = new Bitmap(visaCardImageFullPath);
-            Graphics g = Graphics.FromImage(visaCardImage);
+            creditCardImage = new Bitmap(creditCardImageFullPath);
+            Graphics g = Graphics.FromImage(creditCardImage);
             g.DrawString(cardNumber, cardNumberFont, Brushes.White, new PointF(143, 250));
             g.DrawString(cardValidDate, cardValidDateFont, Brushes.White, new PointF(340, 318));
             g.DrawString(cardName.ToUpper(), new Font("Arial", 14), Brushes.White, new PointF(145, 350));
@@ -55,8 +55,11 @@ namespace VisaCardImageGenerator
 
         public void Save()
         {
-            visaCardImage.Save(outputFilePath);
-            visaCardImage.Dispose();
+            if (creditCardImage != null)
+            {
+                creditCardImage.Save(outputFilePath);
+                creditCardImage.Dispose();
+            }
         }
     }
 }

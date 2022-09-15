@@ -1,4 +1,4 @@
-namespace VisaCardImageGenerator
+namespace CreditCardImageGenerator
 {
     internal static class Program
     {

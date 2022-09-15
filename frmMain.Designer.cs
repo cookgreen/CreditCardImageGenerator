@@ -1,4 +1,4 @@
-﻿namespace VisaCardImageGenerator
+﻿namespace CreditCardImageGenerator
 {
     partial class frmMain
     {
@@ -35,6 +35,9 @@
             this.txtCardName = new System.Windows.Forms.TextBox();
             this.txtCardValidDate = new System.Windows.Forms.TextBox();
             this.btnExport = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cmbCardScenarioSelect = new System.Windows.Forms.ComboBox();
+            this.btnViewScenarioImage = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // label1
@@ -92,7 +95,7 @@
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(358, 113);
+            this.btnExport.Location = new System.Drawing.Point(358, 181);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(192, 72);
             this.btnExport.TabIndex = 6;
@@ -100,11 +103,43 @@
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 120);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(114, 20);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Card Scenario:";
+            // 
+            // cmbCardScenarioSelect
+            // 
+            this.cmbCardScenarioSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCardScenarioSelect.FormattingEnabled = true;
+            this.cmbCardScenarioSelect.Location = new System.Drawing.Point(132, 117);
+            this.cmbCardScenarioSelect.Name = "cmbCardScenarioSelect";
+            this.cmbCardScenarioSelect.Size = new System.Drawing.Size(233, 28);
+            this.cmbCardScenarioSelect.TabIndex = 8;
+            // 
+            // btnViewScenarioImage
+            // 
+            this.btnViewScenarioImage.AutoSize = true;
+            this.btnViewScenarioImage.Location = new System.Drawing.Point(371, 120);
+            this.btnViewScenarioImage.Name = "btnViewScenarioImage";
+            this.btnViewScenarioImage.Size = new System.Drawing.Size(44, 20);
+            this.btnViewScenarioImage.TabIndex = 9;
+            this.btnViewScenarioImage.TabStop = true;
+            this.btnViewScenarioImage.Text = "View";
+            this.btnViewScenarioImage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnViewScenarioImage_LinkClicked);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(559, 197);
+            this.ClientSize = new System.Drawing.Size(559, 265);
+            this.Controls.Add(this.btnViewScenarioImage);
+            this.Controls.Add(this.cmbCardScenarioSelect);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.txtCardValidDate);
             this.Controls.Add(this.txtCardName);
@@ -117,7 +152,7 @@
             this.MinimizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Visa Card Image Generator";
+            this.Text = "Credit Card Image Generator";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -132,5 +167,8 @@
         private TextBox txtCardName;
         private TextBox txtCardValidDate;
         private Button btnExport;
+        private Label label4;
+        private ComboBox cmbCardScenarioSelect;
+        private LinkLabel btnViewScenarioImage;
     }
 }

@@ -1,10 +1,26 @@
-namespace VisaCardImageGenerator
+namespace CreditCardImageGenerator
 {
     public partial class frmMain : Form
     {
+        private List<CreditCardScenario> cards;
+        private CreditCardScenarioReader cardsReader;
+
         public frmMain()
         {
             InitializeComponent();
+
+            cardsReader = new CreditCardScenarioReader();
+            cards = cardsReader.Read("CreditCardScenario.ini");
+
+            cmbCardScenarioSelect.DisplayMember = "Name";
+            foreach (var card in cards)
+            {
+                cmbCardScenarioSelect.Items.Add(card);
+            }
+            if (cmbCardScenarioSelect.Items.Count > 0)
+            {
+                cmbCardScenarioSelect.SelectedIndex = 0;
+            }
         }
 
         private void txtCardValidDate_Validating(object sender, System.ComponentModel.CancelEventArgs e)
@@ -35,7 +51,6 @@ namespace VisaCardImageGenerator
                 MessageBox.Show("Please input a valid card number!");
                 return;
             }
-            int _;
             if (txtCardNumber.Text.Length != 16 ||
                int.TryParse(txtCardName.Text, out _))
             {
@@ -53,7 +68,7 @@ namespace VisaCardImageGenerator
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 string fullPath = dialog.FileName;
-                VisaCardImage visaCardImage = new VisaCardImage(
+                CreditCardImage visaCardImage = new CreditCardImage(
                     txtCardNumber.Text, txtCardName.Text, txtCardValidDate.Text,
                     Path.Combine(Environment.CurrentDirectory, "Images/CardVisaImage.png"),
                     GetFontByFile(Path.Combine(Environment.CurrentDirectory, "CreditCardFont.ttf"), 16),
@@ -70,6 +85,17 @@ namespace VisaCardImageGenerator
             pfc.AddFontFile(fontFilePath);
             Font font = new Font(pfc.Families[0], fontSize, FontStyle.Regular, GraphicsUnit.Point, 0);
             return font;
+        }
+
+        private void btnViewScenarioImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            CreditCardScenario? card = cmbCardScenarioSelect.SelectedItem as CreditCardScenario;
+            if (card != null)
+            {
+                string cardImageFullPath = Path.Combine(Environment.CurrentDirectory, "Images", card.Image);
+                frmCardViewer cardViewer = new frmCardViewer(cardImageFullPath);
+                cardViewer.ShowDialog();
+            }
         }
     }
 }
