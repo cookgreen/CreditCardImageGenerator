@@ -62,6 +62,12 @@ namespace CreditCardImageGenerator
                 MessageBox.Show("Please input a valid card name!");
                 return;
             }
+            CreditCardScenario? card = cmbCardScenarioSelect.SelectedItem as CreditCardScenario;
+            if(card == null)
+            {
+                MessageBox.Show("Please select a valid card!");
+                return;
+            }
 
             SaveFileDialog dialog = new SaveFileDialog();
             dialog.Filter = "Image File|*.png";
@@ -73,6 +79,7 @@ namespace CreditCardImageGenerator
                     Path.Combine(Environment.CurrentDirectory, "Images/CardVisaImage.png"),
                     GetFontByFile(Path.Combine(Environment.CurrentDirectory, "CreditCardFont.ttf"), 16),
                     GetFontByFile(Path.Combine(Environment.CurrentDirectory, "CreditCardFont.ttf"), 12),
+                    card,
                     fullPath);
                 visaCardImage.Save();
                 MessageBox.Show("Save Finished!");

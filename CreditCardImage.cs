@@ -13,6 +13,7 @@ namespace CreditCardImageGenerator
         private string cardValidDate;
         private Font cardNumberFont;
         private Font cardValidDateFont;
+        private CreditCardScenario cardScenario;
         private string outputFilePath;
         private string creditCardImageFullPath;
 
@@ -23,6 +24,7 @@ namespace CreditCardImageGenerator
             string creditCardImageFullPath, 
             Font cardNumberFont,
             Font cardValidDateFont,
+            CreditCardScenario cardScenario,
             string outputFilePath)
         {
             this.cardNumber = cardNumber; 
@@ -31,6 +33,7 @@ namespace CreditCardImageGenerator
             this.creditCardImageFullPath = creditCardImageFullPath; 
             this.cardNumberFont = cardNumberFont;
             this.cardValidDateFont = cardValidDateFont;
+            this.cardScenario = cardScenario;
             this.outputFilePath = outputFilePath;
 
             generateCardImage();
@@ -47,9 +50,9 @@ namespace CreditCardImageGenerator
 
             creditCardImage = new Bitmap(creditCardImageFullPath);
             Graphics g = Graphics.FromImage(creditCardImage);
-            g.DrawString(cardNumber, cardNumberFont, Brushes.White, new PointF(143, 250));
-            g.DrawString(cardValidDate, cardValidDateFont, Brushes.White, new PointF(340, 318));
-            g.DrawString(cardName.ToUpper(), new Font("Arial", 14), Brushes.White, new PointF(145, 350));
+            g.DrawString(cardNumber, cardNumberFont, Brushes.White, cardScenario.CardNumberPosition);
+            g.DrawString(cardValidDate, cardValidDateFont, Brushes.White, cardScenario.CardValidDatePosition);
+            g.DrawString(cardName.ToUpper(), new Font("Arial", 14), Brushes.White, cardScenario.CardNamePosition);
             g.Dispose();
         }
 

@@ -63,9 +63,9 @@ namespace CreditCardImageGenerator
             {
                 streamWriter.WriteLine(string.Format("[{0}]", scenario.Name));
                 streamWriter.WriteLine(string.Format("Image = {0}", scenario.Image));
-                streamWriter.WriteLine(string.Format("CardNumberPos = {0}", scenario.CardNumberPos));
-                streamWriter.WriteLine(string.Format("CardValidDatePos = {0}", scenario.CardValidDatePos));
-                streamWriter.WriteLine(string.Format("CardNamePos = {0}", scenario.CardNamePos));
+                streamWriter.WriteLine(string.Format("CardNumberPos = {0},{1}", scenario.CardNumberPosition.X, scenario.CardNumberPosition.Y));
+                streamWriter.WriteLine(string.Format("CardValidDatePos = {0},{1}", scenario.CardValidDatePosition.X, scenario.CardValidDatePosition.Y));
+                streamWriter.WriteLine(string.Format("CardNamePos = {0},{1}", scenario.CardNamePosition.X, scenario.CardNamePosition.Y));
                 streamWriter.WriteLine(string.Format(Environment.NewLine));
             }
         }
