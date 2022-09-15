@@ -1,2 +1,2 @@
-# VisaCardImageGenerator
-Generate the Visa Card Image with the specific information
+# CreditCardImageGenerator
+Generate the Credit Card Image with the specific information
